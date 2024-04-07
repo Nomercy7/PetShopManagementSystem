@@ -1,0 +1,123 @@
+﻿
+@model List<Store.Models.tb_buy>
+
+@{
+
+    ViewBag.Title = "OrdersList";
+
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+
+}
+
+<style>
+
+    body{
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+    }
+    .container{
+        margin-top: 0px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        padding: 20px;
+    }
+
+    .table{
+        width: 100%;
+        border-collapse: collapse;
+
+    }
+
+    .table th,
+    .table td{
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .table th{
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .table tbody tr:nth-child(even){
+        background-color: #f2f2f2;
+    }
+    .table tbody tr:hover{
+        background-color: #ddd;
+    }
+    h2{
+        color:#333;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .status-paid{
+        color: #009688;
+    }
+
+    .status-delvered{
+        color: #4CAF50;
+    }
+
+</style>
+
+<h2>OrdersList</h2>
+
+<div class="container">
+
+
+    <table class="table table-bordered">
+
+        <thead>
+
+            <tr>
+
+
+                <!--<th>Order Id</th>
+    <th>Total Amount</th>
+
+    <th>Order Date</th>
+
+    <th>Payment Status</th>
+
+    <th>Order Status</th>
+        -->
+                <th>Order Id</th>
+                <th>Total Amount</th>
+                <th>Order Date</th>
+                <th>Payment Status</th>
+                <th>Order Status</th>
+
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var order in Model)
+
+             {
+
+                <tr>
+
+                    <td>@order.order_id</td>
+
+                    <td>@order.price</td>
+
+                    <td>@order.buy_date</td>
+
+                    <td class="status-paid">Paid</td>
+
+                    <td class="status-delvered">Delivered</td>
+
+                </tr>
+
+             }
+
+        </tbody>
+
+    </table>
+
+</div>

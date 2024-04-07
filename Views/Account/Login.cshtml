@@ -1,0 +1,118 @@
+﻿@model Store.Models.MyLogin
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="login-container">
+    <div style="color:red">@ViewBag.ErrorMessage</div>
+    <h2>Login</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        //@Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <h8>Don't have an account?</h8>
+        @Html.ActionLink("Register", "Register")
+    </div>
+
+
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<style>
+    .login-container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        padding: 30px;
+        transition: all 0.5s ease;
+        margin-left: 20px;
+    }
+
+    h2 {
+        color: #333;
+        font-size: 24px;
+        margin-bottom: 20px;
+        transition: background-color 0.5s ease;
+    }
+
+    .form-horizontal {
+        max-width: 500px;
+        margin: 0 auto;
+        transition all 0.5s ease;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .text-dasnger {
+        color: #ff0000;
+    }
+
+    h4 {
+        font-size: 18px;
+        margin-top: 20px;
+        transition: font-size 0.3s ease;
+    }
+
+    .register-link {
+        display: block;
+        margin-top: 10px;
+        color: #007bff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+
+    .btn {
+        transition: all 0.3s ease;
+    }
+
+    body {
+        background-image: url('../../images/front-view-beautiful-dog-with-copy-space_23-2148786561.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>

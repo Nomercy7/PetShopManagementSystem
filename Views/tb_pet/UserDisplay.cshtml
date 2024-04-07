@@ -1,0 +1,156 @@
+﻿
+
+@model IEnumerable<Store.Models.tb_pet>
+
+@{
+
+    ViewBag.Title = "UserDisplay";
+
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+
+}
+
+<h2 style="color: ivory;">UserView</h2>
+
+<style>
+
+    
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: khaki;
+        padding: 20px;
+        color: #333;
+    }
+
+    .vegetable {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px 0;
+        background-color: #f0f8ff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        background-color: rgba(255, 165, 0 , 0.8;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        font-size: 18px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1)
+    }
+
+    .vegetable img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        
+
+    }
+
+    .vegetable h3 {
+        margin: 10px 0;
+        font-size: 24px;
+        color: #009688;
+    }
+
+    .vegetable p {
+        margin: 10px 0;;
+    }
+
+    .button {
+        transition-duration: 0.4s;
+        background-color: #009688;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .button:hover {
+            background-color: #00796b; 
+            
+        }
+</style>
+
+</head>
+
+<body>
+
+    <body>
+
+        @Html.ActionLink("View your cart", "CartView", "tb_cart")
+
+        @foreach (var item in Model)
+
+        {
+            
+
+            <div class="vegetable">
+
+                <h3>@item.pet_name</h3>
+
+                <p>@item.pet_name<br>Species: @item.species<br>Breed: @item.breed<br>Date Of Birth: @item.dateofbirth<br>Is Available: @item.IsAvailable<br>Price: @item.price</p>
+                @using (@Html.BeginForm("AddToCart", "tb_cart", new { id = item.id, pet_name = item.pet_name, price = item.price }, FormMethod.Post))
+
+                {
+
+
+                    <input type="hidden" name="Id" value="@item.id" />
+
+                    <input type="number" name="quantity" value="1" min="1" />
+
+                    <input type="submit" value="Add to Cart" class="btn btn-primary" />
+
+                    //<input type="submit" value="Buy Now" class="btn btn-primary" />
+
+
+                    <br>
+
+                }
+
+
+            </div>
+
+        }
+
+        <script>
+
+            const addToCartBtn = document.getElementById('add-to-cart-btn');
+
+            const popup = document.getElementById('popup');
+
+            addToCartBtn.addEventListener('click', function () {
+
+                popup.style.display = 'block';
+
+                setTimeout(function () {
+
+                    popup.style.display = 'none';
+
+                }, 3000);
+
+            });
+
+
+        </script>
+
+    </body>
+

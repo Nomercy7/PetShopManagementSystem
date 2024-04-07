@@ -1,0 +1,134 @@
+﻿@model IEnumerable<Store.Models.tb_pet>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_newLayout.cshtml";
+}
+<div class="container">
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        
+    </p>
+
+    <div class="table-container">
+        <div class="table-responsive">
+
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pet_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.species)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.breed)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dateofbirth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsAvailable)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.price)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pet_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.species)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.breed)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.dateofbirth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsAvailable)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.price)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    
+    body{
+        background-color: antiquewhite;
+    }
+
+    .table-container{
+        background-color:#ffd800;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin-top: 20px;
+    }
+    .table{
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        background-color: #ffF;
+        border-radius:8px;
+        overflow: hidden;
+    }
+    .table th,
+    .table td{
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    .table th{
+        background-color:#337ab7;
+        color: #fff;
+    }
+    .btn{
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+    .btn-primary{
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-primary:hover{
+        color: #fff;
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+
+</style>
