@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PetStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tb_admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="admin_name" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_buy">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pet_name" Type="varchar" MaxLength="50" />
+    <Property Name="price" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="id" Type="int" />
+    <Property Name="buy_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tb_cart">
+    <Key>
+      <PropertyRef Name="cart_id" />
+    </Key>
+    <Property Name="cart_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" />
+    <Property Name="pet_name" Type="varchar" MaxLength="50" />
+    <Property Name="price" Type="int" />
+    <Property Name="Quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_pet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pet_name" Type="varchar" MaxLength="50" />
+    <Property Name="species" Type="varchar" MaxLength="50" />
+    <Property Name="breed" Type="varchar" MaxLength="50" />
+    <Property Name="dateofbirth" Type="date" />
+    <Property Name="IsAvailable" Type="bit" />
+    <Property Name="price" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_user">
+    <Key>
+      <PropertyRef Name="Userid" />
+    </Key>
+    <Property Name="Userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__tb_buy__id__2D27B809">
+    <End Role="tb_pet" Type="Self.tb_pet" Multiplicity="0..1" />
+    <End Role="tb_buy" Type="Self.tb_buy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_pet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tb_buy">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_cart__id__2A4B4B5E">
+    <End Role="tb_pet" Type="Self.tb_pet" Multiplicity="0..1" />
+    <End Role="tb_cart" Type="Self.tb_cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_pet">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tb_cart">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PetStoreModelStoreContainer">
+    <EntitySet Name="tb_admin" EntityType="Self.tb_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_buy" EntityType="Self.tb_buy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_cart" EntityType="Self.tb_cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_pet" EntityType="Self.tb_pet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_user" EntityType="Self.tb_user" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tb_buy__id__2D27B809" Association="Self.FK__tb_buy__id__2D27B809">
+      <End Role="tb_pet" EntitySet="tb_pet" />
+      <End Role="tb_buy" EntitySet="tb_buy" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_cart__id__2A4B4B5E" Association="Self.FK__tb_cart__id__2A4B4B5E">
+      <End Role="tb_pet" EntitySet="tb_pet" />
+      <End Role="tb_cart" EntitySet="tb_cart" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

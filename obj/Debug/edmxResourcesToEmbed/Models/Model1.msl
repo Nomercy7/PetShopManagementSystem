@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PetStoreModelStoreContainer" CdmEntityContainer="PetStoreEntities4">
+    <EntitySetMapping Name="tb_admin">
+      <EntityTypeMapping TypeName="PetStoreModel.tb_admin">
+        <MappingFragment StoreEntitySet="tb_admin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="admin_name" ColumnName="admin_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_buy">
+      <EntityTypeMapping TypeName="PetStoreModel.tb_buy">
+        <MappingFragment StoreEntitySet="tb_buy">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="pet_name" ColumnName="pet_name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="buy_date" ColumnName="buy_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_cart">
+      <EntityTypeMapping TypeName="PetStoreModel.tb_cart">
+        <MappingFragment StoreEntitySet="tb_cart">
+          <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pet_name" ColumnName="pet_name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_pet">
+      <EntityTypeMapping TypeName="PetStoreModel.tb_pet">
+        <MappingFragment StoreEntitySet="tb_pet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pet_name" ColumnName="pet_name" />
+          <ScalarProperty Name="species" ColumnName="species" />
+          <ScalarProperty Name="breed" ColumnName="breed" />
+          <ScalarProperty Name="dateofbirth" ColumnName="dateofbirth" />
+          <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_user">
+      <EntityTypeMapping TypeName="PetStoreModel.tb_user">
+        <MappingFragment StoreEntitySet="tb_user">
+          <ScalarProperty Name="Userid" ColumnName="Userid" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
