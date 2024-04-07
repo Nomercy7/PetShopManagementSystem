@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PetStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tb_admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_name" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_buy">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pet_name" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="id" Type="int" />
+          <Property Name="buy_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_cart">
+          <Key>
+            <PropertyRef Name="cart_id" />
+          </Key>
+          <Property Name="cart_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" />
+          <Property Name="pet_name" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_pet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pet_name" Type="varchar" MaxLength="50" />
+          <Property Name="species" Type="varchar" MaxLength="50" />
+          <Property Name="breed" Type="varchar" MaxLength="50" />
+          <Property Name="dateofbirth" Type="date" />
+          <Property Name="IsAvailable" Type="bit" />
+          <Property Name="price" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_user">
+          <Key>
+            <PropertyRef Name="Userid" />
+          </Key>
+          <Property Name="Userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__tb_buy__id__2D27B809">
+          <End Role="tb_pet" Type="Self.tb_pet" Multiplicity="0..1" />
+          <End Role="tb_buy" Type="Self.tb_buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_pet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_buy">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_cart__id__2A4B4B5E">
+          <End Role="tb_pet" Type="Self.tb_pet" Multiplicity="0..1" />
+          <End Role="tb_cart" Type="Self.tb_cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_pet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_cart">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PetStoreModelStoreContainer">
+          <EntitySet Name="tb_admin" EntityType="Self.tb_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_buy" EntityType="Self.tb_buy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_cart" EntityType="Self.tb_cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_pet" EntityType="Self.tb_pet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_user" EntityType="Self.tb_user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tb_buy__id__2D27B809" Association="Self.FK__tb_buy__id__2D27B809">
+            <End Role="tb_pet" EntitySet="tb_pet" />
+            <End Role="tb_buy" EntitySet="tb_buy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_cart__id__2A4B4B5E" Association="Self.FK__tb_cart__id__2A4B4B5E">
+            <End Role="tb_pet" EntitySet="tb_pet" />
+            <End Role="tb_cart" EntitySet="tb_cart" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PetStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tb_admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_buy">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pet_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="id" Type="Int32" />
+          <Property Name="buy_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_pet" Relationship="Self.FK__tb_buy__id__2D27B809" FromRole="tb_buy" ToRole="tb_pet" />
+        </EntityType>
+        <EntityType Name="tb_cart">
+          <Key>
+            <PropertyRef Name="cart_id" />
+          </Key>
+          <Property Name="cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" />
+          <Property Name="pet_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="tb_pet" Relationship="Self.FK__tb_cart__id__2A4B4B5E" FromRole="tb_cart" ToRole="tb_pet" />
+        </EntityType>
+        <EntityType Name="tb_pet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pet_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="species" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="breed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateofbirth" Type="DateTime" Precision="0" />
+          <Property Name="IsAvailable" Type="Boolean" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="tb_buy" Relationship="Self.FK__tb_buy__id__2D27B809" FromRole="tb_pet" ToRole="tb_buy" />
+          <NavigationProperty Name="tb_cart" Relationship="Self.FK__tb_cart__id__2A4B4B5E" FromRole="tb_pet" ToRole="tb_cart" />
+        </EntityType>
+        <EntityType Name="tb_user">
+          <Key>
+            <PropertyRef Name="Userid" />
+          </Key>
+          <Property Name="Userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__tb_buy__id__2D27B809">
+          <End Role="tb_pet" Type="Self.tb_pet" Multiplicity="0..1" />
+          <End Role="tb_buy" Type="Self.tb_buy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_pet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_buy">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_cart__id__2A4B4B5E">
+          <End Role="tb_pet" Type="Self.tb_pet" Multiplicity="0..1" />
+          <End Role="tb_cart" Type="Self.tb_cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_pet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_cart">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PetStoreEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tb_admin" EntityType="Self.tb_admin" />
+          <EntitySet Name="tb_buy" EntityType="Self.tb_buy" />
+          <EntitySet Name="tb_cart" EntityType="Self.tb_cart" />
+          <EntitySet Name="tb_pet" EntityType="Self.tb_pet" />
+          <EntitySet Name="tb_user" EntityType="Self.tb_user" />
+          <AssociationSet Name="FK__tb_buy__id__2D27B809" Association="Self.FK__tb_buy__id__2D27B809">
+            <End Role="tb_pet" EntitySet="tb_pet" />
+            <End Role="tb_buy" EntitySet="tb_buy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_cart__id__2A4B4B5E" Association="Self.FK__tb_cart__id__2A4B4B5E">
+            <End Role="tb_pet" EntitySet="tb_pet" />
+            <End Role="tb_cart" EntitySet="tb_cart" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PetStoreModelStoreContainer" CdmEntityContainer="PetStoreEntities4">
+          <EntitySetMapping Name="tb_admin">
+            <EntityTypeMapping TypeName="PetStoreModel.tb_admin">
+              <MappingFragment StoreEntitySet="tb_admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="admin_name" ColumnName="admin_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_buy">
+            <EntityTypeMapping TypeName="PetStoreModel.tb_buy">
+              <MappingFragment StoreEntitySet="tb_buy">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="pet_name" ColumnName="pet_name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="buy_date" ColumnName="buy_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_cart">
+            <EntityTypeMapping TypeName="PetStoreModel.tb_cart">
+              <MappingFragment StoreEntitySet="tb_cart">
+                <ScalarProperty Name="cart_id" ColumnName="cart_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pet_name" ColumnName="pet_name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_pet">
+            <EntityTypeMapping TypeName="PetStoreModel.tb_pet">
+              <MappingFragment StoreEntitySet="tb_pet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pet_name" ColumnName="pet_name" />
+                <ScalarProperty Name="species" ColumnName="species" />
+                <ScalarProperty Name="breed" ColumnName="breed" />
+                <ScalarProperty Name="dateofbirth" ColumnName="dateofbirth" />
+                <ScalarProperty Name="IsAvailable" ColumnName="IsAvailable" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_user">
+            <EntityTypeMapping TypeName="PetStoreModel.tb_user">
+              <MappingFragment StoreEntitySet="tb_user">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

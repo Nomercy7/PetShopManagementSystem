@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1ab7e71ab984d84b0989893baf29329" Name="Diagram1">
+        <EntityTypeShape EntityType="PetStoreModel.tb_admin" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetStoreModel.tb_buy" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetStoreModel.tb_cart" Width="1.5" PointX="4.125" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetStoreModel.tb_pet" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PetStoreModel.tb_user" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="PetStoreModel.FK__tb_buy__id__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="PetStoreModel.FK__tb_cart__id__2A4B4B5E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
